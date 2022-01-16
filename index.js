@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
         res.render("home", {
             urlResult: result
         })
-
     })
 })
 
@@ -31,7 +30,6 @@ app.post('/create', (req, res) => {
         if (err) throw err;
         res.redirect("/")
     })
-
 });
 
 app.get('/:urlId', (req, res) => {
@@ -42,20 +40,16 @@ app.get('/:urlId', (req, res) => {
             res.redirect(data.longUrl)
 
         })
-
-
     })
 })
 
-app.get("/delete/:id",(req,res)=>{
-    UrlModel.findByIdAndDelete({_id:req.params.id},(err,deleteData)=>{
+app.get("/delete/:id", (req, res) => {
+    UrlModel.findByIdAndDelete({ _id: req.params.id }, (err, deleteData) => {
         if (err) throw err;
         res.redirect('/')
     })
 })
 app.listen(process.env.PORT || 5000);
-
-
 
 function generateUrl() {
     var randomResult = "";
