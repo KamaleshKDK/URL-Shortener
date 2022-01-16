@@ -12,15 +12,15 @@
 
 <body>
     <div class="container">
-        <h1>URL Shortener</h1>
+        <h1 style="text-align: center;">URL Shortener</h1>
         <form action="/create" method="POST" class="my-4 form-inline">
-            <label for="fullURL" class="sr-only">URL</label>
+            <label style="font-weight: 600;font-size: 20px;" for="fullURL" class="sr-only">URL</label>
             <input required placeholder=" Paste the URL" type="url" name="fullUrl" class="form-control col mr-2"
                 id="fullUrl">
             <input type="submit" value="Short" class="btn btn-success mt-2">
         </form>
         <table class="table table-striped table-responsive">
-            <thead>
+            <thead style="font-size: 22px;">
                 <tr>
                     <th>Full URL</th>
                     <th>Short URL</th>
@@ -32,9 +32,14 @@
                 <% for(let i=0; i< urlResult.length; i++) { %>
 
                     <tr>
-                        <td><a href="<%= urlResult[i].longUrl %>"><%= urlResult[i].longUrl %></a></td>
-                        <td><a href="http://localhost:5000/<%= urlResult[i].shortUrl %>" target="_blank">http://localhost:5000/<%= urlResult[i].shortUrl %></a></td>
-                        <td><%= urlResult[i].clickCount %></td>
+                        <td><a href="<%= urlResult[i].longUrl %>">
+                                <%= urlResult[i].longUrl %>
+                            </a></td>
+                        <td><a href="http://localhost:5000/<%= urlResult[i].shortUrl %>"
+                                target="_blank">http://localhost:5000/<%= urlResult[i].shortUrl %></a></td>
+                        <td>
+                            <%= urlResult[i].clickCount %>
+                        </td>
                         <td><a href="/delete/<%=  urlResult[i].id %>" class="btn btn-sm btn-danger">Remove</a></td>
                     </tr>
                     <% } %>
